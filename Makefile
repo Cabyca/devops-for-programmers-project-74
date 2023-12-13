@@ -1,4 +1,4 @@
-compose-ci: compose-ci-build
+compose-ci: #compose-ci-build
 	docker-compose -f docker-compose.yml up --abort-on-container-exit
 
 compose:
