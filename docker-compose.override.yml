@@ -1,0 +1,12 @@
+services:
+
+  app:
+    image: dev
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./app:/app
+    command: npm run dev
+    ports:
+      - "8080:8080"

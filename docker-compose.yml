@@ -1,0 +1,8 @@
+services:
+  app:
+    image: cabyca/devops-for-programmers-project-74 
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    command: npm test
+  
