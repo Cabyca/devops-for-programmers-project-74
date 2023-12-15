@@ -4,8 +4,8 @@ ci: #compose-ci-build
 build:
 	docker-compose -f docker-compose.yml build app
 
-compose:
-	docker compose up -d
+push-dockerhub:
+	docker-compose -f docker-compose.yml push app
 
 compose-production:
 	docker compose --file docker-compose.yml run production
