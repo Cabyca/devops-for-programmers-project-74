@@ -2,7 +2,7 @@ ci: #compose-ci-build
 	docker-compose -f docker-compose.yml up --abort-on-container-exit
 
 build:
-	sudo docker-compose -f docker-compose.yml build app
+	docker-compose -f docker-compose.yml build app
 
 compose:
 	docker compose up -d
