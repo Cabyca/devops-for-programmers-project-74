@@ -5,7 +5,7 @@ on: push
 jobs:
   # build – произвольно выбранное имя задания
   # их может быть больше одного
-  tests:
+  do:
     # операционная система для работы воркфлоу
     runs-on: ubuntu-latest
     steps: # список шагов, которые надо выполнить
@@ -16,10 +16,5 @@ jobs:
       # run – произвольная bash-команда
       # ls -la выведет содержимое текущего репозитория
         run: make ci
-  build-images:
-    needs: [tests]
-    runs-on: ubuntu-latest
-    steps:
       - name: build
-        uses: actions/checkout@v3
         run: make build
