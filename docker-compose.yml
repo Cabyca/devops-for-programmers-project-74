@@ -1,8 +1,15 @@
 services:
   app:
-    image: cabyca/devops-for-programmers-project-74 
+    depends_on: [db]
+    image: cabyca/devops-for-programmers-project-74
     build:
       context: .
       dockerfile: Dockerfile.production
     command: npm test
-  
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
