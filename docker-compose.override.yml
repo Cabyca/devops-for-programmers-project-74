@@ -1,6 +1,7 @@
 services:
 
   app:
+    depends_on: [db]
     image: dev
     build:
       dockerfile: Dockerfile
@@ -8,6 +9,8 @@ services:
     volumes:
       - ./app:/app
 #    command: npm run dev
+#    env_file:
+#      - .env
     command: bash -c 'sleep 3 && npm start'    
     ports:
       - "8080:8080"
@@ -28,6 +31,12 @@ services:
       - $PWD/site:/srv
       - caddy_data:/data
       - caddy_config:/config
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - .env
 
 volumes:
   caddy_data:
