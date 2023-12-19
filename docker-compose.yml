@@ -19,6 +19,3 @@ services:
     - POSTGRES_USER=${DATABASE_USERNAME:-postgres}
     - POSTGRES_PASSWORD=${DATABASE_PASSWORD:-password}
     - POSTGRES_DB=${DATABASE_NAME:-postgres}
-
-    ports:
-      - "5432:5432"
