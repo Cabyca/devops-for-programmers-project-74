@@ -9,8 +9,8 @@ services:
     volumes:
       - ./app:/app
 #    command: npm run dev
-#    env_file:
-#      - .env
+    env_file:
+      - .env
     command: bash -c 'sleep 3 && npm start'    
     ports:
       - "8080:8080"
@@ -24,10 +24,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "443:443/udp"
     volumes:
 #      - $PWD/Caddyfile:/etc/caddy/Caddyfile
-      - $PWD/Caddifile:/services/caddy/Caddyfile 
+      - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile 
       - $PWD/site:/srv
       - caddy_data:/data
       - caddy_config:/config
@@ -36,7 +35,12 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      - .env
+    - POSTGRES_USER=${DATABASE_USERNAME}
+    - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    - POSTGRES_DB=${DATABASE_NAME}
+
+    ports:
+      - "5432:5432"
 
 volumes:
   caddy_data:
